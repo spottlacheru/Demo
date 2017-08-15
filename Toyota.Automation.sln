@@ -8,11 +8,38 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		DebugCloudAndroid|Any CPU = DebugCloudAndroid|Any CPU
+		DebugCloudChrome|Any CPU = DebugCloudChrome|Any CPU
+		DebugCloudFireFox|Any CPU = DebugCloudFireFox|Any CPU
+		DebugCloudIE|Any CPU = DebugCloudIE|Any CPU
+		DebugCloudIOS|Any CPU = DebugCloudIOS|Any CPU
+		DebugLocalAndroid|Any CPU = DebugLocalAndroid|Any CPU
+		DebugLocalChrome|Any CPU = DebugLocalChrome|Any CPU
+		DebugLocalFireFox|Any CPU = DebugLocalFireFox|Any CPU
+		DebugLocalIE|Any CPU = DebugLocalIE|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B15B9976-6B43-4727-8733-F262283AE91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B15B9976-6B43-4727-8733-F262283AE91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudAndroid|Any CPU.ActiveCfg = DebugCloudAndroid|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudAndroid|Any CPU.Build.0 = DebugCloudAndroid|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudChrome|Any CPU.ActiveCfg = DebugCloudChrome|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudChrome|Any CPU.Build.0 = DebugCloudChrome|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudFireFox|Any CPU.ActiveCfg = DebugCloudFireFox|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudFireFox|Any CPU.Build.0 = DebugCloudFireFox|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudIE|Any CPU.ActiveCfg = DebugCloudIE|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudIE|Any CPU.Build.0 = DebugCloudIE|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudIOS|Any CPU.ActiveCfg = DebugCloudIOS|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugCloudIOS|Any CPU.Build.0 = DebugCloudIOS|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugLocalAndroid|Any CPU.ActiveCfg = DebugLocalAndroid|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugLocalAndroid|Any CPU.Build.0 = DebugLocalAndroid|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugLocalChrome|Any CPU.ActiveCfg = DebugLocalChrome|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugLocalChrome|Any CPU.Build.0 = DebugLocalChrome|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugLocalFireFox|Any CPU.ActiveCfg = DebugLocalFireFox|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugLocalFireFox|Any CPU.Build.0 = DebugLocalFireFox|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugLocalIE|Any CPU.ActiveCfg = DebugLocalIE|Any CPU
+		{B15B9976-6B43-4727-8733-F262283AE91A}.DebugLocalIE|Any CPU.Build.0 = DebugLocalIE|Any CPU
 		{B15B9976-6B43-4727-8733-F262283AE91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B15B9976-6B43-4727-8733-F262283AE91A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
