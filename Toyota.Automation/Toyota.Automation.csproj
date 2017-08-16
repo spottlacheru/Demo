@@ -181,6 +181,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Actions\ActionEngine.cs" />
     <Compile Include="AppLocators.cs" />
     <Compile Include="Feature\VerifyAppContent.feature.cs">
       <AutoGen>True</AutoGen>
@@ -203,9 +204,13 @@
       <DependentUpon>VerifyAppPages.feature</DependentUpon>
     </Compile>
     <Compile Include="Hooks.cs" />
+    <Compile Include="Locators\BankDetailsLoc.cs" />
+    <Compile Include="Locators\HomeDetailsLoc.cs" />
+    <Compile Include="Locators\LoanPurposeDetailsLoc.cs" />
+    <Compile Include="Locators\LoanSetupDetailsLoc.cs" />
+    <Compile Include="Locators\PersonalDetailsLoc.cs" />
     <Compile Include="Steps\ContentSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\VerifyAppDataSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

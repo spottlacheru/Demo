@@ -14,9 +14,9 @@ Scenario: Verify display content
 @Browser:Chrome
 Scenario: Verify login
 	Given The User has Launched URL
-	When The User click on "Login" button
+	When The User click on Apply button
 	Then The Page Navigates to "Login" page
-    And The User Sees "UserName" button
-    And The User Sees "Password" button
-    Then The User enters "" in "" entry
-    Then The User enters "" in "" entry
+    And The User Sees StartApplication button
+    And The User Selects LoanAmount slider
+    Then The User enters LoanAmount entry
+    Then The User click on Continue button

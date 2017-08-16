@@ -100,17 +100,17 @@ this.ScenarioSetup(scenarioInfo);
 #line 16
  testRunner.Given("The User has Launched URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 17
- testRunner.When("The User click on \"Login\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("The User click on Apply button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
  testRunner.Then("The Page Navigates to \"Login\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 19
-    testRunner.And("The User Sees \"UserName\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("The User Sees StartApplication button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 20
-    testRunner.And("The User Sees \"Password\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("The User Selects LoanAmount slider", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 21
-    testRunner.Then("The User enters \"\" in \"\" entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("The User enters LoanAmount entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 22
-    testRunner.Then("The User enters \"\" in \"\" entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("The User click on Continue button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
