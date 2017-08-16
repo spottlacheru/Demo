@@ -56,42 +56,6 @@ namespace Toyota.Automation
             System.Threading.Thread.Sleep(30000);
         }
 
-        [When(@"The User click on ""(.*)"" button")]
-        public void WhenTheUserClickOnButton(string p0)
-        {
-           var val = _bankdetail.AddAnotherBank;
-        }
-
-        [Then(@"The Page Navigates to ""(.*)"" page")]
-        public void ThenThePageNavigatesToPage(string p0)
-        {
-
-        }
-
-        [Then(@"The User Sees ""(.*)"" image")]
-        public void ThenTheUserSeesImage(string p0)
-        {
-
-        }
-
-        [Then(@"The User Sees ""(.*)"" table")]
-        public void ThenTheUserSeesTable(string p0)
-        {
-
-        }
-
-        [Then(@"The User Sees ""(.*)"" button")]
-        public void ThenTheUserSeesButton(string p0)
-        {
-
-        }
-
-        [Then(@"The User enters """"(.*)"""" entry")]
-        public void ThenTheUserEntersEntry(string p0)
-        {
-
-        }
-
         [When(@"The User click on Apply button")]
         public void WhenTheUserClickOnApplyButton()
         {
