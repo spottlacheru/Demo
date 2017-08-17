@@ -53,6 +53,10 @@ namespace Toyota.Automation
         [Conditional("DebugLocalChrome")]
         public void DebugLocalChrome()
         {
+            //ChromeOptions chrOpts = new ChromeOptions();
+            //chrOpts.AddArguments("test-type");
+            //chrOpts.AddArguments("--disable-extensions");
+            //chrOpts.AddArgument("incognito");
             _driver = new ChromeDriver();
             _driver.Manage().Window.Maximize();
         }
@@ -66,7 +70,7 @@ namespace Toyota.Automation
         [Conditional("DebugLocalIE")]
         public void DebugLocalIE()
         {
-           
+
         }
 
         [Conditional("DebugLocalAndroid")]

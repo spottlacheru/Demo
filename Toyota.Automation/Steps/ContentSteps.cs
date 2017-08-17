@@ -28,7 +28,7 @@ namespace Toyota.Automation
         public ContentSteps(IWebDriver driver)
         {
             _driver = driver;
-
+            _act = new ActionEngine(driver);
             _bankdetail = new BankDetailsDesktopNLLoc();
             SetHelperDesktop();
             SetHelperMobile();
@@ -60,21 +60,20 @@ namespace Toyota.Automation
             _loanpurposdetails = new LoanPurposeDetailsMobileNLLoc();
             _loansetupdetails = new LoanSetupDetailsMobileNLLoc();
             _personaldetail = new PersonalDetailsMobileNLLoc();
-        }
+        }         
 
-            [Given(@"The User has Launched URL")]
-        public void GivenTheUserHasLaunchedURL()
+        [Given(@"Navigate to URL")]
+        public void GivenNavigateToURL()
         {
             _driver.Navigate().GoToUrl("https://staging.inator.com.au/");
             Thread.Sleep(30000);
         }
 
-        [When(@"The User click on Apply button")]
-        public void WhenTheUserClickOnApplyButton()
-        {        
+       [Then(@"Click on Apply button")]
+        public void ThenClickOnApplyButton()
+        {
             _act.waitForVisibilityOfElement(_homedetails.linkMenuApply, 60);
             _act.click(_homedetails.linkMenuApply, "ApplyLinkBtn");
-       
         }
 
         [Then(@"Click on Start application button\.")]
