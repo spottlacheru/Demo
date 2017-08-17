@@ -18,8 +18,8 @@ namespace Toyota.Automation.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("VerifyAppData")]
-    public partial class VerifyAppDataFeature
+    [NUnit.Framework.DescriptionAttribute("Data")]
+    public partial class DataFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,8 +31,7 @@ namespace Toyota.Automation.Feature
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "VerifyAppData", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Data", "\tLaunches the URL and verify the contents", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -65,24 +64,40 @@ namespace Toyota.Automation.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify display Data")]
-        [NUnit.Framework.CategoryAttribute("smoke_test")]
-        public virtual void VerifyDisplayData()
+        [NUnit.Framework.DescriptionAttribute(": Verify App Data")]
+        [NUnit.Framework.CategoryAttribute("Smoke_test")]
+        public virtual void VerifyAppData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify display Data", new string[] {
-                        "smoke_test"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(": Verify App Data", new string[] {
+                        "Smoke_test"});
+#line 5
+ this.ScenarioSetup(scenarioInfo);
+#line 6
+        testRunner.Given("The User Navigate to URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-this.ScenarioSetup(scenarioInfo);
+        testRunner.When("The User Clicks on Apply button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
- testRunner.Given("The User has Launched URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("The User Click on Start application button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "loan",
+                        "Approval"});
+            table1.AddRow(new string[] {
+                        "1000",
+                        "900"});
+            table1.AddRow(new string[] {
+                        "2000",
+                        "300"});
+            table1.AddRow(new string[] {
+                        "3000",
+                        "2000"});
+            table1.AddRow(new string[] {
+                        "4000",
+                        "3000"});
 #line 9
- testRunner.When("The User click on \"Home\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
- testRunner.Then("The Page Navigates to \"Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 11
-    testRunner.And("The User Sees \"Display\" image", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 12
-    testRunner.And("The User Sees \"Details\" table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.Then("The User Select loan Amount", ((string)(null)), table1, "Then ");
+#line 15
+        testRunner.And("The User Enters Personal Details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

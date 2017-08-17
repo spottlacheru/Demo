@@ -1,12 +1,15 @@
-﻿Feature: VerifyAppData
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+﻿Feature: Data
+	Launches the URL and verify the contents
 
-@smoke_test
-Scenario: Verify display Data
-	Given The User has Launched URL
-	When The User click on "Home" button
-	Then The Page Navigates to "Home" page
-    And The User Sees "Display" image
-    And The User Sees "Details" table
+	@Smoke_test
+	Scenario: : Verify App Data
+        Given The User Navigate to URL
+        When The User Clicks on Apply button
+        And The User Click on Start application button
+        Then The User Select loan Amount 
+		| loan       | Approval |
+		| 1000       | 900      |
+		| 2000       | 300      |
+        | 3000       | 2000     |
+		| 4000       | 3000     |
+        And The User Enters Personal Details

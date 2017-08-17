@@ -64,60 +64,24 @@ namespace Toyota.Automation.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify display content")]
-        [NUnit.Framework.CategoryAttribute("smoke_test")]
-        public virtual void VerifyDisplayContent()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify display content", new string[] {
-                        "smoke_test"});
-#line 5
-this.ScenarioSetup(scenarioInfo);
-#line 6
- testRunner.Given("The User has Launched URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify login")]
-        [NUnit.Framework.CategoryAttribute("smoke_test")]
-        [NUnit.Framework.CategoryAttribute("Browser:Chrome")]
-        public virtual void VerifyLogin()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify login", new string[] {
-                        "smoke_test",
-                        "Browser:Chrome"});
-#line 12
-this.ScenarioSetup(scenarioInfo);
-#line 13
- testRunner.Given("The User has Launched URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 14
- testRunner.When("The User click on Apply button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 15
-    testRunner.Then("The User enters LoanAmount entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 16
-    testRunner.Then("The User click on Continue button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute(": Nimble")]
+        [NUnit.Framework.DescriptionAttribute(": Verify URL Launch")]
         [NUnit.Framework.CategoryAttribute("Smoke_test")]
-        public virtual void Nimble()
+        public virtual void VerifyURLLaunch()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(": Nimble", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(": Verify URL Launch", new string[] {
                         "Smoke_test"});
-#line 19
+#line 5
  this.ScenarioSetup(scenarioInfo);
-#line 20
-testRunner.Given("Navigate to URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 21
-testRunner.Then("Click on Apply button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 22
-testRunner.And("Click on Start application button.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
-testRunner.And("Select loan Amount (MAAC-3000)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 6
+        testRunner.Given("The User Navigate to URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+        testRunner.When("The User Clicks on Apply button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 8
+        testRunner.And("The User Click on Start application button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 9
+        testRunner.Then("The User Select loan Amount \"3000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 10
+        testRunner.And("The User Enters Personal Details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
