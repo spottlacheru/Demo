@@ -171,6 +171,8 @@ namespace Toyota.Automation.Repository
 
         By FortNight { get; }
 
+        By Weekly { get; }
+
         By Monthly { get; }
 
         By FinalRepaymentConfirmPage { get; }
@@ -229,7 +231,12 @@ namespace Toyota.Automation.Repository
 
         By Unconfirmedrepaymsg { get; }
 
-        
+        By SelectFirstRepaymentDate { get; }
+
+        By MaxLoanAmt { get; }
+
+        By LoanAmountSlider { get; }
+
 
 
         #endregion
@@ -403,6 +410,8 @@ namespace Toyota.Automation.Repository
 
         public By FortNight => By.XPath("//label[@for='payFrequencyFort']");
 
+        public By Weekly => By.XPath("//label[text()='Weekly']");
+
         public By Monthly => By.XPath("//label[@for='payFrequencyMonth']");
 
         public By FinalRepaymentConfirmPage => By.XPath("(//div[@id='contractPage1']/table)[2]//tr//td[contains(text(),'A final repayment of $')]");
@@ -445,6 +454,7 @@ namespace Toyota.Automation.Repository
 
         public By RepaymentCountConfirmPage => By.XPath("//*[@id='contractPage1']/table[2]/tbody/tr[3]/td[2]");
 
+        public By SelectFirstRepaymentDate => By.XPath("//div[@id='howLongSlider']/span");
 
         public By RepaymentCountSetupPage => By.XPath("//td[@id='repaymentCount']");
 
@@ -456,13 +466,15 @@ namespace Toyota.Automation.Repository
 
         public By RepAmtInTable => By.XPath("//td[@id='repaymentAmount']");
 
+        public By MaxLoanAmt => By.XPath("(//div[@class='slider-labels'])[1]/div[@class='maxAmount minmax f-right font-14 charcoal']");
+
+        public By LoanAmountSlider => By.CssSelector("#amtRequestedSlider_wrap [class^='display-value']>span");
 
         public By Unconfirmedcontractmsg => By.XPath(".//tr[@id='termsandconditions2_error']//p");
 
         public By Unconfirmedpurposemsg => By.XPath(".//tr[@id='confirmpurpose_error']//p");
 
         public By Unconfirmedrepaymsg => By.XPath(".//tr[@id='confirmrepay_error']//p");
-
 
         public By GetConfirmedTxt => By.XPath("//*[@id='MemberDashboard']/div[1]/div/p");
 
@@ -611,6 +623,8 @@ namespace Toyota.Automation.Repository
 
         public By LastDate => By.XPath("(//td[@class='dateCol'])[last()]");
 
+        public By Weekly => By.XPath("//label[text()='Weekly']");
+
         public By RepaymentConfirmPage => By.XPath("(//td[@colspan='2'])[last()-9]");
 
         public By RepaymentSetupPage => By.XPath("//td[@id='totalRepayment']");
@@ -686,11 +700,17 @@ namespace Toyota.Automation.Repository
 
         public By RepAmtInTable => By.XPath("//td[@id='repaymentAmount']");
 
+        public By SelectFirstRepaymentDate => By.XPath("//div[@id='howLongSlider']/span");
+
         public By Unconfirmedcontractmsg => By.XPath(".//tr[@id='termsandconditions2_error']//p");
 
         public By Unconfirmedpurposemsg => By.XPath(".//tr[@id='confirmpurpose_error']//p");
 
         public By Unconfirmedrepaymsg => By.XPath(".//tr[@id='confirmrepay_error']//p");
+
+        public By MaxLoanAmt => By.XPath("(//div[@class='slider-labels'])[1]/div[@class='maxAmount minmax f-right font-14 charcoal']");
+
+        public By LoanAmountSlider => By.CssSelector("#amtRequestedSlider_wrap [class^='display-value']>span");
 
         public By GetConfirmedTxt => By.XPath("//*[@id='MemberDashboard']/div[1]/div/p");
 
@@ -915,11 +935,19 @@ namespace Toyota.Automation.Repository
 
         public By RepAmtInTable => By.XPath("//td[@id='repaymentAmount']");
 
+        public By Weekly => By.XPath("//label[text()='Weekly']");
+
         public By Unconfirmedcontractmsg => By.XPath(".//tr[@id='termsandconditions2_error']//p");
 
         public By Unconfirmedpurposemsg => By.XPath(".//tr[@id='confirmpurpose_error']//p");
 
         public By Unconfirmedrepaymsg => By.XPath(".//tr[@id='confirmrepay_error']//p");
+
+        public By SelectFirstRepaymentDate => By.XPath("//div[@id='howLongSlider']/span");
+
+        public By MaxLoanAmt => By.XPath("(//div[@class='slider-labels'])[1]/div[@class='maxAmount minmax f-right font-14 charcoal']");
+
+        public By LoanAmountSlider => By.CssSelector("#amtRequestedSlider_wrap [class^='display-value']>span");
 
         public By GetConfirmedTxt => By.XPath("//*[@id='MemberDashboard']/div[1]/div/p");
 
@@ -1147,6 +1175,14 @@ namespace Toyota.Automation.Repository
         public By Unconfirmedpurposemsg => By.XPath(".//tr[@id='confirmpurpose_error']//p");
 
         public By Unconfirmedrepaymsg => By.XPath(".//tr[@id='confirmrepay_error']//p");
+
+        public By Weekly => By.XPath("//label[text()='Weekly']");
+
+        public By SelectFirstRepaymentDate => By.XPath("//div[@id='howLongSlider']/span");
+
+        public By MaxLoanAmt => By.XPath("(//div[@class='slider-labels'])[1]/div[@class='maxAmount minmax f-right font-14 charcoal']");
+
+        public By LoanAmountSlider => By.CssSelector("#amtRequestedSlider_wrap [class^='display-value']>span");
 
         public By GetConfirmedTxt => By.XPath("//*[@id='MemberDashboard']/div[1]/div/p");
 

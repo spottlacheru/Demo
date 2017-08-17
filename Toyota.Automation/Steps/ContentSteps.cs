@@ -7,12 +7,16 @@ using System.Threading;
 using System.Text;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Interactions;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Toyota.Automation
 {
     [Binding]
     public class ContentSteps
     {
+        public int loanamount = 1800;
         private IWebDriver _driver;
         private ActionEngine _act = null;
         private IBankDetails _bankdetail;
@@ -83,25 +87,16 @@ namespace Toyota.Automation
         [Then(@"Select loan Amount \(MAAC(.*)\)")]
         public void ThenSelectLoanAmountMAAC(int p0, string POL)
         {
-            RequestLoanAmount(1800, "Household goods and furniture");
-        }
-
-        [Then(@"Select purpose of loan \(Households\)")]
-        public void ThenSelectPurposeOfLoanHouseholds()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
-        [Then(@"Enter purpose of loan amount \(MAAC(.*)\)")]
-        public void ThenEnterPurposeOfLoanAmountMAAC(int p0)
-        {
-            ScenarioContext.Current.Pending();
+            RequestLoanAmount(loanamount, "Household goods and furniture");
+            EnterFirstPOLAmountTxt(loanamount.ToString());
         }
 
         [Then(@"Enter Personal Details & contact details")]
         public void ThenEnterPersonalDetailsContactDetails()
         {
-            ScenarioContext.Current.Pending();
+            PopulatePersonalDetails();
+            _act.waitForVisibilityOfElement(_personaldetail.checkoutContinueButton, 180);
+            _act.click(_personaldetail.checkoutContinueButton, "checkoutContinueButton");
         }
 
         [Then(@"Select bank \(Dag bank\)\.")]
@@ -179,37 +174,20 @@ namespace Toyota.Automation
         {
             _act.waitForVisibilityOfElement(_bankdetail.AgreeApplicationsubmit, 60);
             _act.click(_bankdetail.AgreeApplicationsubmit, "AgreeApplicationsubmit");
+
+            _act.waitForVisibilityOfElement(_bankdetail.BtnConfirmSummary, 60);
+            _act.click(_bankdetail.BtnConfirmSummary, "BtnConfirmSummary");
         }
 
         [Then(@"Verify SMS OTP\.")]
         public void ThenVerifySMSOTP_()
         {
-            ScenarioContext.Current.Pending();
-        }
-
-
-        [Then(@"The User enters LoanAmount entry")]
-        public void ThenTheUserEntersLoanAmountEntry()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
-        [Then(@"The User click on Continue button")]
-        public void ThenTheUserClickOnContinueButton()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
-        [Given(@"Navigate to URL")]
-        public void GivenNavigateToURL()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
-        [Then(@"Click on Apply button\.")]
-        public void ThenClickOnApplyButton_()
-        {
-            ScenarioContext.Current.Pending();
+            if (loanamount > 1600)
+            {
+                // enter sms input as OTP     
+                if (VerifySMSOTP())
+                    EnterOTPDetailsTxt("1234");
+            }
         }
 
         [Then(@"Verify Approved Amount with Applied Amount ""(.*)""")]
@@ -218,150 +196,180 @@ namespace Toyota.Automation
            //\\Verify Assert
         }
 
-
         [Then(@"Choose Loan Amount Slider \((.*)\)")]
         public void ThenChooseLoanAmountSlider(int p0)
         {
-            //    _act.waitForVisibilityOfElement(_loansetupdetails.loanSlider, 200);
-
-            //    //Get the slider max value
-
-            //    //string value= _act.getText(_loansetupdetailsLoc.MinLoanAmt, "");
-            //    //var split = value.Split('$');
-            //    //string minValue = split[1];
-            //    //min will always be 300
-
-            //    string value1 = _act.getText(_loansetupdetails.MaxLoanAmt, "");
-            //    var split1 = value1.Split('$');
-            //    string maxValue = split1[1].Replace(",", "");
-            //    int a = Convert.ToInt32(maxValue);
-            //    int b = 300;
-            //    int middleamount;
-            //    if (a < 1600)
-            //        middleamount = (a - b) / 25;//you vll get 50 here
-            //    else
-            //        middleamount = (a - b) / 50;
-
-            //    IWebElement sliderEle = _driver.FindElement(_loansetupdetails.loanSlider);
-            //    _act.click(_loansetupdetails.loanSlider, "slider");
-
-            //    for (int i = 1; i <= middleamount; i++)
-            //    {
-            //        string actualValue = _act.getText(_loansetupdetails.LoanAmountSlider, "");
-            //        int actualValueInt = Convert.ToInt32(actualValue.Replace("$", "").Replace(",", ""));
-
-            //        //then compare the value with your desired value
-            //        if (desiredvalue == actualValueInt)
-            //        {
-            //            break;
-            //        }
-
-            //        sliderEle.SendKeys(Keys.ArrowLeft);
-
-            //    }
-            //    Thread.Sleep(4000);
+            ChangeChooseLoanAmountSlider(loanamount, 950);
         }
 
     [Then(@"Choose Frequency \(Fortnightly\)")]
         public void ThenChooseFrequencyFortnightly()
         {
-            ScenarioContext.Current.Pending();
+            ChoseFrequency("Fortnight");
         }
 
         [Then(@"Change First Repayment Date \(loanAmount\)")]
         public void ThenChangeFirstRepaymentDateLoanAmount()
         {
-            ScenarioContext.Current.Pending();
+           ChangeFirstRepaymetnDate(loanamount);
         }
 
         [Then(@"Move Slider Middle Amount RL \((.*)\)")]
-        public void ThenMoveSliderMiddleAmountRL(int p0)
+        public void ThenMoveSliderMiddleAmountRL()
         {
-            ScenarioContext.Current.Pending();
+            MoveSliderMiddleAmountRL(180);
         }
 
         [Then(@"Click Detailed Repayment Schedule\.")]
         public void ThenClickDetailedRepaymentSchedule_()
         {
-            ScenarioContext.Current.Pending();
+            _act.waitForVisibilityOfElement(_loansetupdetails.DetailedrepaymentscheduleButton, 60);
+            _act.click(_loansetupdetails.DetailedrepaymentscheduleButton, "DetailedrepaymentscheduleButton");
+            Thread.Sleep(5000);
         }
 
         [Then(@"Verify first date")]
-        public void ThenVerifyFirstDate()
+        public int ThenVerifyFirstDate()
         {
-            ScenarioContext.Current.Pending();
+            int firstDate = Convert.ToInt32(GetFirstDateSetupPage());
+            return firstDate;
         }
 
         [Then(@"Verify last Date")]
-        public void ThenVerifyLastDate()
+        public int ThenVerifyLastDate()
         {
-            ScenarioContext.Current.Pending();
+            int lastDate = Convert.ToInt32(GetLastDateSetupPage());
+            return lastDate;
         }
 
         [Then(@"Verify repayment Amount")]
-        public void ThenVerifyRepaymentAmount()
+        public int ThenVerifyRepaymentAmount()
         {
-            ScenarioContext.Current.Pending();
+            int repaymentAmt = GetRepaymentAmountSetupPage();
+            return repaymentAmt;
         }
 
         [Then(@"Verify no of repayments count")]
-        public void ThenVerifyNoOfRepaymentsCount()
+        public int ThenVerifyNoOfRepaymentsCount()
         {
-            ScenarioContext.Current.Pending();
+            int repaymentcount = GetRepaymentCountSetupPage();
+            return repaymentcount;
         }
 
         [Then(@"Verify repayment schedule amount")]
-        public void ThenVerifyRepaymentScheduleAmount()
+        public int ThenVerifyRepaymentScheduleAmount()
         {
-            ScenarioContext.Current.Pending();
+            int repaymentcount = getRepAmtInTableMiddle();
+            return repaymentcount;
         }
 
         [Then(@"Getting a list of repayment count\.")]
         public void ThenGettingAListOfRepaymentCount_()
         {
-            ScenarioContext.Current.Pending();
+            List<List<string>> _values = GetDetailedLoanSchedule();
+
+            List<string> amount = _values[2];
+            //bool bln = (amount.Any(x => x != amount[0]));
+            if (amount.Any(x => x != amount[0]))
+            {
+                int repaymentcount = GetRepaymentCountSetupPage();
+                repaymentcount = repaymentcount - 1;
+            }
+
+            // click on Buton Submit
+            Console.WriteLine(_values);
+            _act.waitForVisibilityOfElement(_loansetupdetails.ButtonSubmit, 120);
+            _act.click(_loansetupdetails.ButtonSubmit, "ButtonSubmit");
+            Thread.Sleep(2500);
         }
 
         [Then(@"Select Spend less Reason")]
         public void ThenSelectSpendLessReason()
         {
-            ScenarioContext.Current.Pending();
+            bool ReasonPageExists = FindandselectSpendless();
+            if (ReasonPageExists == true)
+            {
+                SelectReasontospendLess("cheaperproduct");
+            }
         }
 
         [Then(@"Click on Loan contract")]
         public void ThenClickOnLoanContract()
         {
-            ScenarioContext.Current.Pending();
+            VerifyContractPage(ThenVerifyFirstDate(), ThenVerifyLastDate(), ThenVerifyRepaymentAmount(), ThenVerifyNoOfRepaymentsCount(), ThenVerifyRepaymentScheduleAmount());
+            _act.waitForVisibilityOfElement(_loansetupdetails.Loancontract, 100);
+            IWebElement sliderElement = _driver.FindElement(_loansetupdetails.Loancontract);
+            IWebElement scrolldown = _driver.FindElement(By.XPath(".//div[@id='scrollBottom']"));
+            _driver.FindElement(_loansetupdetails.LoanContractLabel).Click();
+            bool elementvisible = _act.isElementDisabled(_loansetupdetails.confirmLoancotract);
+            Actions actions = new Actions(_driver);
+            actions.MoveToElement(scrolldown);
+            actions.Perform();
         }
 
         [Then(@"Click on Confirm Accepting Contract")]
         public void ThenClickOnConfirmAcceptingContract()
         {
-            ScenarioContext.Current.Pending();
+            if (GetPlatform(_driver))
+            {
+                IWebElement confirmLoancotractBtn = _driver.FindElement(_loansetupdetails.confirmLoancotract);
+                Actions actions = new Actions(_driver);
+                actions.MoveToElement(confirmLoancotractBtn);
+                actions.Perform();
+
+                _act.waitForVisibilityOfElement(_loansetupdetails.confirmLoancotract, 120);
+                _act.JSClick(_loansetupdetails.confirmLoancotract, "confirmLoancotract");
+
+                _act.waitForVisibilityOfElement(_loansetupdetails.confirmpurpose, 120);
+                _act.JSClick(_loansetupdetails.confirmpurpose, "confirmpurpose");
+
+                _act.waitForVisibilityOfElement(_loansetupdetails.confirmrepay, 120);
+                _act.JSClick(_loansetupdetails.confirmrepay, "confirmrepay");
+            }
+            else
+            {
+                IWebElement confirmLoancotractBtn = _driver.FindElement(_loansetupdetails.confirmLoancotract);
+                Actions actions = new Actions(_driver);
+                actions.MoveToElement(confirmLoancotractBtn);
+                actions.Perform();
+
+                _act.waitForVisibilityOfElement(_loansetupdetails.confirmLoancotract, 120);
+                _act.JSClick(_loansetupdetails.confirmLoancotract, "confirmLoancotract");
+
+                _act.waitForVisibilityOfElement(_loansetupdetails.confirmpurpose, 120);
+                _act.JSClick(_loansetupdetails.confirmpurpose, "confirmpurpose");
+
+                _act.waitForVisibilityOfElement(_loansetupdetails.confirmrepay, 120);
+                _act.JSClick(_loansetupdetails.confirmrepay, "confirmrepay");
+            }
         }
 
         [Then(@"Click On Agree Button")]
         public void ThenClickOnAgreeButton()
         {
-            ScenarioContext.Current.Pending();
+            _act.waitForVisibilityOfElement(_loansetupdetails.submitcontractButton, 120);
+            _act.JSClick(_loansetupdetails.submitcontractButton, "submitcontractButton");
         }
 
         [Then(@"Click on No-thanks Button")]
         public void ThenClickOnNo_ThanksButton()
         {
-            ScenarioContext.Current.Pending();
+            _act.waitForVisibilityOfElement(_loansetupdetails.NoThanksButton, 120);
+            _act.click(_loansetupdetails.NoThanksButton, "NoThanksButton");
         }
 
         [Then(@"Click on Loan Dashboard Button")]
         public void ThenClickOnLoanDashboardButton()
         {
-            ScenarioContext.Current.Pending();
+            _act.waitForVisibilityOfElement(_loansetupdetails.LoanDashBoard, 180);
+            _act.JSClick(_loansetupdetails.LoanDashBoard, "loan dashboard");
         }
 
         [Then(@"Click on Logout Button")]
         public void ThenClickOnLogoutButton()
         {
-            ScenarioContext.Current.Pending();
+            _act.waitForVisibilityOfElement(_loansetupdetails.Logout, 120);
+            _act.JSClick(_loansetupdetails.Logout, "Logout");
         }
 
         public void RequestLoanAmount(int requestedAmount, string loanpurpose)
@@ -452,6 +460,65 @@ namespace Toyota.Automation
             }
 
         }
+        public bool FindandselectSpendless()
+        {
+            Thread.Sleep(5000);
+            bool flag = false;
+            if (_act.isElementPresent(_loansetupdetails.JustCheckingLabel))
+            {
+                flag = true;
+            }
+            else
+            {
+                flag = false;
+            }
+            return flag;
+        }
+        public void SelectReasontospendLess(string ReasonforSpendLess)
+        {
+            if (GetPlatform(_driver))
+            {
+                if (ReasonforSpendLess.Contains(","))
+                {
+                    var spendreasons = ReasonforSpendLess.Split(',');
+                    foreach (var reason in spendreasons)
+                    {
+                        var choosereason = By.XPath(".//label[contains(text(),'" + reason + "')]");
+                        _act.waitForVisibilityOfElement(choosereason, 120);
+                        _act.JSClick(choosereason, "selectreason");
+                    }
+                    _act.JSClick(_loansetupdetails.reasonsubmitBtn, "reasonsubmitBtn");
+                }
+                else
+                {
+                    var choosereason = By.XPath(".//label[contains(text(),'" + ReasonforSpendLess + "')]");
+                    _act.waitForVisibilityOfElement(choosereason, 60);
+                    _act.JSClick(choosereason, "selectreason");
+                    _act.JSClick(_loansetupdetails.reasonsubmitBtn, "reasonsubmitBtn");
+                }
+            }
+            else
+            {
+                if (ReasonforSpendLess.Contains(","))
+                {
+                    var spendreasons = ReasonforSpendLess.Split(',');
+                    foreach (var reason in spendreasons)
+                    {
+                        var choosereason = By.XPath(".//table[@id='offerOptions']//tr/td/label[contains(text(),'" + reason + "')]");
+                        _act.waitForVisibilityOfElement(choosereason, 60);
+                        _act.JSClick(choosereason, "selectreason");
+                    }
+                    _act.JSClick(_loansetupdetails.reasonsubmitBtn, "reasonsubmitBtn");
+                }
+                else
+                {
+                    var choosereason = By.XPath(".//table[@id='offerOptions']//tr/td/label[contains(text(),'" + ReasonforSpendLess + "')]");
+                    _act.waitForVisibilityOfElement(choosereason, 60);
+                    _act.JSClick(choosereason, "selectreason");
+                    _act.JSClick(_loansetupdetails.reasonsubmitBtn, "reasonsubmitBtn");
+                }
+            }
+        }
 
         public PersonalDetailsDataObj PopulatePersonalDetails()
         {
@@ -536,6 +603,7 @@ namespace Toyota.Automation
 
             return _obj;
         }
+
 
         public async void PopulatePersonalDetails(PersonalDetailsDataObj _perData)
         {
@@ -855,6 +923,106 @@ namespace Toyota.Automation
             public string UserType { get; set; }
 
         }
+        public void VerifyContractPage(int strExpFirstDate, int strExpLasttDate, int intRepaymentAmt, int intrepaymentcount, int intrepaymentscheduleamt)
+        {
+            Console.WriteLine("Last date in LoanSetUPPage" + strExpLasttDate);
+            Thread.Sleep(5000);
+            _act.waitForVisibilityOfElement(_loansetupdetails.FirstDateConfirmPage, 350);
+            int firstDate = Convert.ToInt32(GetFirstDateConfirmPage());
+            int lastDate = Convert.ToInt32(GetLastDateConfirmPage());
+            Console.WriteLine("Last date in ConfirmPage" + lastDate);
+            int repaymentAmt = GetRepaymentAmountConfirmPage();
+            int repaymentcount = GetRepaymentCountConfirmPage();
+            int repaymentscheduleamt = FinalRepaymentconformationPage();
+
+
+            //  Assert.IsTrue(firstDate.Contains(strExpFirstDate));
+            Assert.AreEqual(firstDate, strExpFirstDate);
+            // Assert.IsTrue(lastDate.Contains(strExpLasttDate));
+            Assert.AreEqual(strExpLasttDate, lastDate);
+            Assert.AreEqual(intRepaymentAmt, repaymentAmt, "last date matched");
+            Assert.AreEqual(intrepaymentcount, repaymentcount);
+            Assert.AreEqual(intrepaymentscheduleamt, repaymentscheduleamt, "DISCLOSURE DATE MATCHED");
+
+        }
+        public string GetLastDateConfirmPage()
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.LastDateConfirmPage, 60);
+            string date = _act.getText(_loansetupdetails.LastDateConfirmPage, "");
+            // return date;
+            var date1 = date.Split(',');
+            string day = date1[0];
+            var date2 = day.Split('/');
+            string date3 = date2[0];
+
+            return date3;
+        }
+        public int GetRepaymentAmountConfirmPage()
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.RepaymentConfirmPage, 60);
+            string amount = _act.getText(_loansetupdetails.RepaymentConfirmPage, "");
+            var repay = amount.Split('.');
+            string repayamt = repay[0];
+            repayamt = repayamt.Replace("$", "");
+            repayamt = repayamt.Replace(",", "");
+            int repamt = Convert.ToInt32(repayamt);
+            return repamt;
+        }
+        public int GetRepaymentCountConfirmPage()
+        {
+            // _act.waitForVisibilityOfElement(_loansetupdetailsLoc.RepaymentCountConfirmPage, 60);
+            string count = _act.getText(_loansetupdetails.RepaymentCountConfirmPage, "");
+            var count1 = count.Split(' ');
+            string repcnt = count1[4];
+            int repaymentcount = Convert.ToInt32(repcnt);
+            int repaymentfinalcount = 0;
+            try
+            {
+                if (_driver.FindElement(By.XPath("(//div[@id='contractPage1']/table)[2]//tr//td[contains(text(),'last repayment')]")).Displayed)
+                    repaymentfinalcount = repaymentcount + 1;
+
+            }
+            catch
+            {
+                repaymentfinalcount = (repaymentcount);
+            }
+            return repaymentfinalcount;
+        }
+        public void EnterFirstPOLAmountTxt(string firstPOLAmount)
+        {
+            _act.EnterText(_loanpurposdetails.FirstLoanAmount, firstPOLAmount);
+            if (_act.isElementPresent(_loanpurposdetails.ContinueButton))
+            {
+                _act.waitForVisibilityOfElement(_loanpurposdetails.ContinueButton, 60);
+                _act.click(_loanpurposdetails.ContinueButton, "LoanPOlContinueBtn");
+            }
+        }
+
+        public int FinalRepaymentconformationPage()
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.FinalRepaymentConfirmPage, 600);
+            string text = _act.getText(_loansetupdetails.FinalRepaymentConfirmPage, "");
+            var text1 = text.Split(' ');
+            string lastrepay = text1[4];
+            var amt1 = lastrepay.Split('.');
+            string amt2 = amt1[0];
+            amt2 = amt2.Replace("$", "");
+            amt2 = amt2.Replace(",", "");
+            int amt4 = Convert.ToInt32(amt2);
+            return amt4;
+
+        }
+        public string GetFirstDateConfirmPage()
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.FirstDateConfirmPage, 120);
+            string date = _act.getText(_loansetupdetails.FirstDateConfirmPage, "");
+            var date1 = date.Split(',');
+            string day = date1[0];
+            var date2 = day.Split('/');
+            string date3 = date2[0];
+
+            return date3;
+        }
 
         public void CheckReadPrivacyBtn(string UserType)
         {
@@ -896,6 +1064,231 @@ namespace Toyota.Automation
                 }
             }
         }
+        public List<List<string>> GetDetailedLoanSchedule()
+        {
+
+            bool flag = false;
+            int index = 0;
+            IWebElement baseTable = _driver.FindElement(_loansetupdetails.DetailedTable);
+            List<IWebElement> tableRows = new List<IWebElement>();
+            tableRows = baseTable.FindElements(By.TagName("tr")).ToList();
+            List<string> Date = new List<string>();
+            List<string> Day = new List<string>();
+            List<string> Amount = new List<string>();
+            for (int i = 1; i < tableRows.Count - 3; i++)
+            {
+                IWebElement row = baseTable.FindElement(By.XPath("//*[@id='repayments']/tbody/tr[" + i + "]"));
+                IWebElement cell1 = row.FindElement(By.XPath("//*[@id='repayments']/tbody/tr[" + i + "]/td[1]"));
+                IWebElement cell2 = row.FindElement(By.XPath("//*[@id='repayments']/tbody/tr[" + i + "]/td[2]"));
+                IWebElement cell3 = row.FindElement(By.XPath("//*[@id='repayments']/tbody/tr[" + i + "]/td[3]"));
+                Date.Add(cell1.Text.ToString());
+                Day.Add(cell2.Text.ToString());
+                Amount.Add(cell3.Text.ToString());
+
+            }
+            List<List<string>> list = new List<List<string>>();
+            list.Add(Date);
+            list.Add(Day);
+            list.Add(Amount);
+
+            return list;
+        }
+
+        public string GetFirstDateSetupPage()
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.FirstDate, 200);
+            string date = _act.getText(_loansetupdetails.FirstDate, "");
+            var date1 = date.Split(' ');
+            string a = date1[1];
+            var numAlpha = new Regex("(?<Alpha>[a-zA-Z]*)(?<Numeric>[0-9]*)");
+            var match = numAlpha.Match(a);
+
+            var alpha = match.Groups["Alpha"].Value;
+            var num = match.Groups["Numeric"].Value;
+            //  fdate =
+            return num;
+        }
+        public string GetLastDateSetupPage()
+        {
+            string date = _act.getText(_loansetupdetails.LastDate, "");
+            var date1 = date.Split(' ');
+            string a = date1[1];
+            var numAlpha = new Regex("(?<Alpha>[a-zA-Z]*)(?<Numeric>[0-9]*)");
+            var match = numAlpha.Match(a);
+
+            var alpha = match.Groups["Alpha"].Value;
+            var num = match.Groups["Numeric"].Value;
+
+            //  fdate =
+            return num;
+        }
+
+        public int GetRepaymentAmountSetupPage()
+        {
+            Thread.Sleep(4000);
+            _act.waitForVisibilityOfElement(_loansetupdetails.RepaymentSetupPage, 60);
+            string amount = _act.getText(_loansetupdetails.RepaymentSetupPage, "");
+            var repay = amount.Split('.');
+            string repayamt = repay[0];
+            repayamt = repayamt.Replace("$", "");
+            repayamt = repayamt.Replace(",", "");
+            int repamt = Convert.ToInt32(repayamt);
+            return repamt;
+        }
+
+        public int GetRepaymentCountSetupPage()
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.RepaymentCountSetupPage, 60);
+            string count = _act.getText(_loansetupdetails.RepaymentCountSetupPage, "");
+            int repaymentcount = Convert.ToInt32(count);
+            return repaymentcount;
+        }
+        public int getRepAmtInTableMiddle()
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.RepAmtInTable, 300);
+            string amt = _act.getText(_loansetupdetails.RepAmtInTable, "email");
+            var amt1 = amt.Split('.');
+            string amt2 = amt1[0];
+            amt2 = amt2.Replace("$", "");
+            amt2 = amt2.Replace(",", "");
+            int amt4 = Convert.ToInt32(amt2);
+            return amt4;
+        }
+        public void MoveSliderMiddleAmountRL(int loanamt)
+        {
+
+            _act.waitForVisibilityOfElement(_loansetupdetails.SliderButtonLowestAmount, 150);
+            IWebElement sliderEle = _driver.FindElement(_loansetupdetails.SliderButtonLowestAmount);
+            _act.click(_loansetupdetails.SliderButtonLowestAmount, "slider");
+
+            if (loanamt > 1600)
+            {
+                for (int i = 1; i <= 25; i++)
+
+                {
+                    sliderEle.SendKeys(Keys.ArrowLeft);
+                    Thread.Sleep(1000);
+
+                }
+                Thread.Sleep(3000);
+            }
+
+            else
+            {
+                for (int i = 1; i <= 3; i++)
+
+                {
+                    sliderEle.SendKeys(Keys.ArrowLeft);
+                    Thread.Sleep(2000);
+
+                }
+            }
+        }
+        public void ChangeFirstRepaymetnDate(int loanamt)
+        {
+
+            _act.waitForVisibilityOfElement(_loansetupdetails.SelectFirstRepaymentDate, 150);
+            IWebElement sliderEle = _driver.FindElement(_loansetupdetails.SelectFirstRepaymentDate);
+            _act.click(_loansetupdetails.SelectFirstRepaymentDate, "slider");
+
+            if (loanamt > 1600)
+            {
+                for (int i = 1; i <= 25; i++)
+
+                {
+                    sliderEle.SendKeys(Keys.ArrowLeft);
+                    Thread.Sleep(1000);
+
+                }
+                Thread.Sleep(3000);
+            }
+
+            else
+            {
+                for (int i = 1; i <= 3; i++)
+
+                {
+                    sliderEle.SendKeys(Keys.ArrowRight);
+                    Thread.Sleep(2000);
+
+                }
+            }
+        }
+        public void ChoseFrequency(string frequency)
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.FortNight, 60);
+            if (frequency == "Weekly")
+                _act.click(_loansetupdetails.Weekly, "");
+            if (frequency == "Fortnight")
+                _act.click(_loansetupdetails.FortNight, "");
+            if (frequency == "Monthly")
+                _act.click(_loansetupdetails.Monthly, "");
+        }
+        public void ChangeChooseLoanAmountSlider(int Amount, int desiredvalue)
+        {
+            _act.waitForVisibilityOfElement(_loansetupdetails.loanSlider, 200);
+
+            //Get the slider max value
+
+            //string value= _act.getText(_loansetupdetailsLoc.MinLoanAmt, "");
+            //var split = value.Split('$');
+            //string minValue = split[1];
+            //min will always be 300
+
+            string value1 = _act.getText(_loansetupdetails.MaxLoanAmt, "");
+            var split1 = value1.Split('$');
+            string maxValue = split1[1].Replace(",", "");
+            int a = Convert.ToInt32(maxValue);
+            int b = 300;
+            int middleamount;
+            if (a < 1600)
+                middleamount = (a - b) / 25;//you vll get 50 here
+            else
+                middleamount = (a - b) / 50;
+
+            IWebElement sliderEle = _driver.FindElement(_loansetupdetails.loanSlider);
+            _act.click(_loansetupdetails.loanSlider, "slider");
+
+            for (int i = 1; i <= middleamount; i++)
+            {
+                string actualValue = _act.getText(_loansetupdetails.LoanAmountSlider, "");
+                int actualValueInt = Convert.ToInt32(actualValue.Replace("$", "").Replace(",", ""));
+
+                //then compare the value with your desired value
+                if (desiredvalue == actualValueInt)
+                {
+                    break;
+                }
+
+                sliderEle.SendKeys(Keys.ArrowLeft);
+
+            }
+            Thread.Sleep(4000);
+        }
+
+        public void EnterOTPDetailsTxt(string OTP)
+        {
+            _act.waitForVisibilityOfElement(_bankdetail.SMSDiv, 120);
+            _act.EnterText(_bankdetail.SMSInput, OTP);
+            _act.JSClick(_bankdetail.SubmitPin, "SubmitPin");
+        }
+
+        public bool VerifySMSOTP()
+        {
+            bool flag = false;
+            _act.waitForVisibilityOfElement(_bankdetail.SMSDiv, 120);
+            if (_act.isElementPresent(_bankdetail.SMSDiv))
+            {
+                flag = true;
+            }
+            else
+            {
+                flag = false;
+            }
+            return flag;
+        }
 
     }
+
 }
+
