@@ -146,7 +146,7 @@ testRunner.And("Click Agree App Submit Button", ((string)(null)), ((TechTalk.Spe
 #line 36
 testRunner.And("Verify SMS OTP.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 37
-testRunner.And("Verify loan Amount with Approved amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("Verify Approved Amount with Applied Amount \"5000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 38
 testRunner.And("Choose Loan Amount Slider (950)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 39

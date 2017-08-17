@@ -194,7 +194,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Actions\ActionEngine.cs" />
-    <Compile Include="Actions\TestEngine.cs" />
     <Compile Include="AppLocators.cs" />
     <Compile Include="Feature\VerifyAppContent.feature.cs">
       <AutoGen>True</AutoGen>

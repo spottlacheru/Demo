@@ -6,6 +6,7 @@ using System;
 using System.Threading;
 using System.Text;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Toyota.Automation
 {
@@ -186,58 +187,82 @@ namespace Toyota.Automation
             ScenarioContext.Current.Pending();
         }
 
-        [Then(@"Verify loan Amount with Approved amount")]
-        public void ThenVerifyLoanAmountWithApprovedAmount()
+
+        [Then(@"The User enters LoanAmount entry")]
+        public void ThenTheUserEntersLoanAmountEntry()
         {
-            Assert.IsTrue(_loanSetUpDetails.VerifyApprovedLoan(loanamout),
-                       "Expected Requested Amount : " + loanamout + ". Observed Approved Amount : " +
-                       _loanSetUpDetails.GetApprovedamount());
+            ScenarioContext.Current.Pending();
         }
+
+        [Then(@"The User click on Continue button")]
+        public void ThenTheUserClickOnContinueButton()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Given(@"Navigate to URL")]
+        public void GivenNavigateToURL()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"Click on Apply button\.")]
+        public void ThenClickOnApplyButton_()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"Verify Approved Amount with Applied Amount ""(.*)""")]
+        public void ThenVerifyApprovedAmountWithAppliedAmount(int p0)
+        {
+           //\\Verify Assert
+        }
+
 
         [Then(@"Choose Loan Amount Slider \((.*)\)")]
         public void ThenChooseLoanAmountSlider(int p0)
         {
-            _act.waitForVisibilityOfElement(_loansetupdetails.loanSlider, 200);
+            //    _act.waitForVisibilityOfElement(_loansetupdetails.loanSlider, 200);
 
-            //Get the slider max value
+            //    //Get the slider max value
 
-            //string value= _act.getText(_loansetupdetailsLoc.MinLoanAmt, "");
-            //var split = value.Split('$');
-            //string minValue = split[1];
-            //min will always be 300
+            //    //string value= _act.getText(_loansetupdetailsLoc.MinLoanAmt, "");
+            //    //var split = value.Split('$');
+            //    //string minValue = split[1];
+            //    //min will always be 300
 
-            string value1 = _act.getText(_loansetupdetails.MaxLoanAmt, "");
-            var split1 = value1.Split('$');
-            string maxValue = split1[1].Replace(",", "");
-            int a = Convert.ToInt32(maxValue);
-            int b = 300;
-            int middleamount;
-            if (a < 1600)
-                middleamount = (a - b) / 25;//you vll get 50 here
-            else
-                middleamount = (a - b) / 50;
+            //    string value1 = _act.getText(_loansetupdetails.MaxLoanAmt, "");
+            //    var split1 = value1.Split('$');
+            //    string maxValue = split1[1].Replace(",", "");
+            //    int a = Convert.ToInt32(maxValue);
+            //    int b = 300;
+            //    int middleamount;
+            //    if (a < 1600)
+            //        middleamount = (a - b) / 25;//you vll get 50 here
+            //    else
+            //        middleamount = (a - b) / 50;
 
-            IWebElement sliderEle = _driver.FindElement(_loansetupdetails.loanSlider);
-            _act.click(_loansetupdetails.loanSlider, "slider");
+            //    IWebElement sliderEle = _driver.FindElement(_loansetupdetails.loanSlider);
+            //    _act.click(_loansetupdetails.loanSlider, "slider");
 
-            for (int i = 1; i <= middleamount; i++)
-            {
-                string actualValue = _act.getText(_loansetupdetails.LoanAmountSlider, "");
-                int actualValueInt = Convert.ToInt32(actualValue.Replace("$", "").Replace(",", ""));
+            //    for (int i = 1; i <= middleamount; i++)
+            //    {
+            //        string actualValue = _act.getText(_loansetupdetails.LoanAmountSlider, "");
+            //        int actualValueInt = Convert.ToInt32(actualValue.Replace("$", "").Replace(",", ""));
 
-                //then compare the value with your desired value
-                if (desiredvalue == actualValueInt)
-                {
-                    break;
-                }
+            //        //then compare the value with your desired value
+            //        if (desiredvalue == actualValueInt)
+            //        {
+            //            break;
+            //        }
 
-                sliderEle.SendKeys(Keys.ArrowLeft);
+            //        sliderEle.SendKeys(Keys.ArrowLeft);
 
-            }
-            Thread.Sleep(4000);
+            //    }
+            //    Thread.Sleep(4000);
         }
 
-        [Then(@"Choose Frequency \(Fortnightly\)")]
+    [Then(@"Choose Frequency \(Fortnightly\)")]
         public void ThenChooseFrequencyFortnightly()
         {
             ScenarioContext.Current.Pending();
@@ -507,10 +532,7 @@ namespace Toyota.Automation
             _act.click(_personaldetail.personaldetailscontinuebutton, "personaldetailscontinuebutton");
 
 
-            TestUtility _testut = new TestUtility();
-            string strbuilder = DateTime.Now.ToString("MM-dd-yy HH:mm") + " " + TestContext.CurrentContext.Test.Name + "--" + _obj.Email + Environment.NewLine;
-
-            _testut.WriteToFile(strbuilder);
+           
 
             return _obj;
         }
@@ -597,10 +619,7 @@ namespace Toyota.Automation
 
             _act.click(_personaldetail.personaldetailscontinuebutton, "personaldetailscontinuebutton");
 
-            TestUtility _testut = new TestUtility();
-            string strbuilder = DateTime.Now.ToString("MM-dd-yy HH:mm") + " " + TestContext.CurrentContext.Test.Name + "--" + _personalData.Email + Environment.NewLine;
-
-            await _testut.WriteToFile(strbuilder);
+          
         }
 
         public PersonalDetailsDataObj VerifyObj(PersonalDetailsDataObj _obj)

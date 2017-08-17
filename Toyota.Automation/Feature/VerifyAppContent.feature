@@ -34,7 +34,7 @@ And Select Dependents List as (0)
 And Click Govt. Benefits Options List as (NO)
 And Click Agree App Submit Button
 And Verify SMS OTP.
-And Verify loan Amount with Approved amount
+And Verify Approved Amount with Applied Amount "5000"
 And Choose Loan Amount Slider (950)
 And Choose Frequency (Fortnightly)
 And Change First Repayment Date (loanAmount)
