@@ -162,14 +162,14 @@ namespace Toyota.Automation
             capability.SetCapability("project", Environment.GetEnvironmentVariable("BS_AUTOMATE_PROJECT"));
             capability.SetCapability("build", Environment.GetEnvironmentVariable("BS_AUTOMATE_BUILD"));
             capability.SetCapability("browserstack.localIdentifier", Environment.GetEnvironmentVariable("BROWSERSTACK_LOCAL_IDENTIFIER"));
-            capability.SetCapability("deviceReadyTimeout", TimeSpan.FromSeconds(200));
-            capability.SetCapability("androidDeviceReadyTimeout", TimeSpan.FromSeconds(200));
-            capability.SetCapability("avdLaunchTimeout", TimeSpan.FromSeconds(200));
-            capability.SetCapability("appWaitDuration", TimeSpan.FromSeconds(200));
-            capability.SetCapability("avdReadyTimeout", TimeSpan.FromSeconds(200));
-            capability.SetCapability("idleTimeout", 300);
-            _driver = new RemoteWebDriver(new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capability, TimeSpan.FromSeconds(200));
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(200));
+            capability.SetCapability("deviceReadyTimeout", TimeSpan.FromSeconds(500));
+            capability.SetCapability("androidDeviceReadyTimeout", TimeSpan.FromSeconds(500));
+            capability.SetCapability("avdLaunchTimeout", TimeSpan.FromSeconds(500));
+            capability.SetCapability("appWaitDuration", TimeSpan.FromSeconds(500));
+            capability.SetCapability("avdReadyTimeout", TimeSpan.FromSeconds(500));
+            capability.SetCapability("idleTimeout", 500);
+            _driver = new RemoteWebDriver(new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capability, TimeSpan.FromSeconds(500));
+            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(500));
 
 
         }

@@ -23,8 +23,8 @@ namespace Toyota.Automation
         private IHomeDetails _homedetails;
         private ILoanPurposeDetails _loanpurposdetails;
         private ILoanSetupDetails _loansetupdetails;
-        private IPersonalDetails _personaldetail;
-
+        private IPersonalDetails _personaldetail; 
+          
         public ContentSteps(IWebDriver driver)
         {
             _driver = driver;
@@ -60,43 +60,54 @@ namespace Toyota.Automation
             _loanpurposdetails = new LoanPurposeDetailsMobileNLLoc();
             _loansetupdetails = new LoanSetupDetailsMobileNLLoc();
             _personaldetail = new PersonalDetailsMobileNLLoc();
-        }         
+        }
 
-        [Given(@"Navigate to URL")]
-        public void GivenNavigateToURL()
+        [Given(@"The User Navigate to URL")]
+        public void GivenTheUserNavigateToURL()
         {
             _driver.Navigate().GoToUrl("https://staging.inator.com.au/");
             Thread.Sleep(30000);
         }
 
-       [Then(@"Click on Apply button")]
-        public void ThenClickOnApplyButton()
+        [When(@"The User Clicks on Apply button")]
+        public void WhenTheUserClicksOnApplyButton()
         {
             _act.waitForVisibilityOfElement(_homedetails.linkMenuApply, 60);
             _act.click(_homedetails.linkMenuApply, "ApplyLinkBtn");
         }
 
-        [Then(@"Click on Start application button\.")]
-        public void ThenClickOnStartApplicationButton_()
+        [When(@"The User Click on Start application button")]
+        public void WhenTheUserClickOnStartApplicationButton()
         {
             _act.waitForVisibilityOfElement(_homedetails.btnstartApplication, 60);
             _act.click(_homedetails.btnstartApplication, "btnstartApplication");
         }
 
-        [Then(@"Select loan Amount \(MAAC(.*)\)")]
-        public void ThenSelectLoanAmountMAAC(int p0, string POL)
+        [Then(@"The User Select loan Amount (.*)")]
+        public void ThenTheUserSelectLoanAmount(int p0)
         {
             RequestLoanAmount(loanamount, "Household goods and furniture");
-            EnterFirstPOLAmountTxt(loanamount.ToString());
+            EnterFirstPOLAmountTxt(p0.ToString());
         }
 
-        [Then(@"Enter Personal Details & contact details")]
-        public void ThenEnterPersonalDetailsContactDetails()
+        [Then(@"The User Enters Personal Details")]
+        public void ThenTheUserEntersPersonalDetails()
         {
             PopulatePersonalDetails();
             _act.waitForVisibilityOfElement(_personaldetail.checkoutContinueButton, 180);
             _act.click(_personaldetail.checkoutContinueButton, "checkoutContinueButton");
         }
+
+        [Then(@"The User Select loan Amount")]
+        public void ThenTheUserSelectLoanAmount(Table table)
+        {
+            foreach (var row in table.Rows)
+            {
+                var loan = row[0];
+                EnterFirstPOLAmountTxt(loan.ToString());
+            }
+        }
+
 
         [Then(@"Select bank \(Dag bank\)\.")]
         public void ThenSelectBankDagBank_()
@@ -192,7 +203,7 @@ namespace Toyota.Automation
         [Then(@"Verify Approved Amount with Applied Amount ""(.*)""")]
         public void ThenVerifyApprovedAmountWithAppliedAmount(int p0)
         {
-           //\\Verify Assert
+            //\\Verify Assert
         }
 
         [Then(@"Choose Loan Amount Slider \((.*)\)")]
@@ -201,7 +212,7 @@ namespace Toyota.Automation
             ChangeChooseLoanAmountSlider(loanamount, 950);
         }
 
-    [Then(@"Choose Frequency \(Fortnightly\)")]
+        [Then(@"Choose Frequency \(Fortnightly\)")]
         public void ThenChooseFrequencyFortnightly()
         {
             ChoseFrequency("Fortnight");
@@ -210,7 +221,7 @@ namespace Toyota.Automation
         [Then(@"Change First Repayment Date \(loanAmount\)")]
         public void ThenChangeFirstRepaymentDateLoanAmount()
         {
-           ChangeFirstRepaymetnDate(loanamount);
+            ChangeFirstRepaymetnDate(loanamount);
         }
 
         [Then(@"Move Slider Middle Amount RL \((.*)\)")]
@@ -598,7 +609,7 @@ namespace Toyota.Automation
             _act.click(_personaldetail.personaldetailscontinuebutton, "personaldetailscontinuebutton");
 
 
-           
+
 
             return _obj;
         }
@@ -686,7 +697,7 @@ namespace Toyota.Automation
 
             _act.click(_personaldetail.personaldetailscontinuebutton, "personaldetailscontinuebutton");
 
-          
+
         }
 
         public PersonalDetailsDataObj VerifyObj(PersonalDetailsDataObj _obj)
@@ -1030,7 +1041,7 @@ namespace Toyota.Automation
                 string classtextReadPrivacy = _driver.FindElement(_personaldetail.ReadPrivacychecked).GetAttribute("class");
                 if (!classtextReadPrivacy.Contains("checked"))
                 {
-                    _act.JSClick(_personaldetail .ReadPrivacychecked, "ReadPrivacychecked");
+                    _act.JSClick(_personaldetail.ReadPrivacychecked, "ReadPrivacychecked");
                 }
             }
             else
