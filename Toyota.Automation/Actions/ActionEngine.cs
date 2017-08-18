@@ -14,7 +14,6 @@ using OpenQA.Selenium.Support.UI;
 using Select = OpenQA.Selenium.Support.UI.SelectElement;
 using WebDriverWait = OpenQA.Selenium.Support.UI.WebDriverWait;
 //using OutputType = OpenQA.Selenium.OutputType;
-using WebElement = OpenQA.Selenium.IWebElement;
 using System.IO;
 using OpenQA.Selenium;
 
@@ -55,7 +54,7 @@ namespace Toyota.Automation
             try
             {
                 /*Highlight element*/
-                WebElement webElement = driver.FindElement(locator);
+                IWebElement webElement = driver.FindElement(locator);
                 JavascriptExecutor js = driver as JavascriptExecutor;
                 js.ExecuteScript("arguments[0].style.border='4px solid yellow'", webElement);
                 /*Highlight code ends*/
@@ -94,9 +93,9 @@ namespace Toyota.Automation
             {
                 /*Highlight element*/
 
-                WebElement webElement = driver.FindElement(locator);
+                IWebElement WebElement = driver.FindElement(locator);
                 JavascriptExecutor js = driver as JavascriptExecutor;
-                js.ExecuteScript("arguments[0].style.border='4px solid yellow'", webElement);
+                js.ExecuteScript("arguments[0].style.border='4px solid yellow'", WebElement);
                 /*Highlight code ends*/
                 driver.FindElement(locator).Clear();
 
@@ -234,8 +233,8 @@ namespace Toyota.Automation
             bool flag = false;
             try
             {
-                WebElement ListBox = driver.FindElement(locator);
-                IReadOnlyCollection<WebElement> options = ListBox.FindElements(By.TagName("option"));
+                IWebElement ListBox = driver.FindElement(locator);
+                IReadOnlyCollection<IWebElement> options = ListBox.FindElements(By.TagName("option"));
                 foreach (var option in options)
                 {
                     string opt = option.Text.Trim();
@@ -358,7 +357,7 @@ namespace Toyota.Automation
             return value;
         }
 
-        public bool click1(WebElement locator, string locatorName)
+        public bool click1(IWebElement locator, string locatorName)
         {
             bool flag = false;
             try
@@ -420,7 +419,7 @@ namespace Toyota.Automation
             return bvalue;
         }
 
-        public bool isElementDisplayed(WebElement element)
+        public bool isElementDisplayed(IWebElement element)
         {
             bool flag = false;
             try
@@ -617,7 +616,7 @@ namespace Toyota.Automation
             bool flag = false;
             try
             {
-                WebElement element = driver.FindElement(locator);
+                IWebElement element = driver.FindElement(locator);
                 JavascriptExecutor executor = (JavascriptExecutor)driver;
                 executor.ExecuteScript("arguments[0].click();", element);
                 //driver.executeAsyncScript("arguments[0].click();", element);
@@ -655,7 +654,7 @@ namespace Toyota.Automation
             bool flag = false;
             try
             {
-                WebElement mo = driver.FindElement(locator);
+                IWebElement mo = driver.FindElement(locator);
                 string javaScript = "var evObj = document.createEvent('MouseEvents');" + "evObj.initMouseEvent(\"mouseover\",true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);" + "arguments[0].dispatchEvent(evObj);";
                 JavascriptExecutor js = (JavascriptExecutor)driver;
                 js.ExecuteScript(javaScript, mo);
@@ -675,7 +674,7 @@ namespace Toyota.Automation
             bool flag = false;
             try
             {
-                WebElement mo = driver.FindElement(locator);
+                IWebElement mo = driver.FindElement(locator);
                 (new Actions(driver)).MoveToElement(mo).Build().Perform();
                 flag = true;
                 return flag;
@@ -687,7 +686,7 @@ namespace Toyota.Automation
 
         }
 
-        public void mouseOverElement(WebElement element, string locatorName)
+        public void mouseOverElement(IWebElement element, string locatorName)
         {
             try
             {
@@ -706,7 +705,7 @@ namespace Toyota.Automation
             bool flag = false;
             try
             {
-                WebElement elementToRightClick = driver.FindElement(by);
+                IWebElement elementToRightClick = driver.FindElement(by);
                 Actions clicker = new Actions(driver);
                 clicker.ContextClick(elementToRightClick).Perform();
                 flag = true;
@@ -782,7 +781,7 @@ namespace Toyota.Automation
 
                 /*Highlight element*/
 
-                WebElement webElement = driver.FindElement(locator);
+                IWebElement webElement = driver.FindElement(locator);
                 JavascriptExecutor js = driver as JavascriptExecutor;
                 js.ExecuteScript("arguments[0].style.border='4px solid yellow'", webElement);
                 /*Highlight code ends*/
@@ -804,7 +803,7 @@ namespace Toyota.Automation
             bool flag = false;
             try
             {
-                WebElement dragitem = driver.FindElement(slider);
+                IWebElement dragitem = driver.FindElement(slider);
                 // new Actions(driver).dragAndDropBy(dragitem, 400, 1).build()
                 // .perform();
                 (new Actions(driver)).DragAndDropToOffset(dragitem, x, y).Build().Perform(); // 150,0
@@ -1084,7 +1083,7 @@ namespace Toyota.Automation
         //    {
         //        wait.Until((d) =>
         //        {
-        //            IWebElement element = driver.FindElements(lookupBy).FirstOrDefault();
+        //            IIWebElement element = driver.FindElements(lookupBy).FirstOrDefault();
         //            try
         //            {
         //                if (element != null && element.Displayed)
@@ -1110,7 +1109,7 @@ namespace Toyota.Automation
         public void clickWhenReady(By locator, int timeout)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
-            WebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(locator));
+            IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(locator));
             element.Click();
         }
 
@@ -1122,7 +1121,7 @@ namespace Toyota.Automation
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
             try
             {
-                WebElement ele = wait.Until(ExpectedConditions.ElementIsVisible(lookupBy));
+                IWebElement ele = wait.Until(ExpectedConditions.ElementIsVisible(lookupBy));
                 flag = true;
             }
             catch (Exception ex)
@@ -1148,7 +1147,7 @@ namespace Toyota.Automation
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
             try
             {
-                WebElement ele = wait.Until(ExpectedConditions.ElementIsVisible(lookupBy));
+                IWebElement ele = wait.Until(ExpectedConditions.ElementIsVisible(lookupBy));
                 bln = true;
             }
             catch (Exception ex)
