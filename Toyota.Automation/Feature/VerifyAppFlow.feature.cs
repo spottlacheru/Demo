@@ -73,16 +73,6 @@ namespace Toyota.Automation.Feature
                         "smoke_test"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
-#line 8
- testRunner.Given("The User has Launched URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
- testRunner.When("The User click on \"Home\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
- testRunner.Then("The Page Navigates to \"Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 11
-    testRunner.And("The User Sees \"Display\" image", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 12
-    testRunner.And("The User Sees \"Details\" table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

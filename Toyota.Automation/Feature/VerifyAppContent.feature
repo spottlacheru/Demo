@@ -3,17 +3,17 @@
 
 @smoke_test
 Scenario: Verify display content
-	Given The User has Launched URL
+	#Given The User has Launched URL
 	 
 
     
 @smoke_test
 @Browser:Chrome
 Scenario: Verify login
-	Given The User has Launched URL
-	When The User click on Apply button	    
-    Then The User enters LoanAmount entry
-    Then The User click on Continue button
+	#Given The User has Launched URL
+	#When The User click on Apply button	    
+ #   Then The User enters LoanAmount entry
+ #   Then The User click on Continue button
 
 	@Smoke_test
 	Scenario: : Nimble

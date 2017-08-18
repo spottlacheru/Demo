@@ -72,8 +72,6 @@ namespace Toyota.Automation.Feature
                         "smoke_test"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
-#line 6
- testRunner.Given("The User has Launched URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -89,14 +87,6 @@ this.ScenarioSetup(scenarioInfo);
                         "Browser:Chrome"});
 #line 12
 this.ScenarioSetup(scenarioInfo);
-#line 13
- testRunner.Given("The User has Launched URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 14
- testRunner.When("The User click on Apply button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 15
-    testRunner.Then("The User enters LoanAmount entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 16
-    testRunner.Then("The User click on Continue button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

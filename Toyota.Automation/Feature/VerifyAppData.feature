@@ -5,8 +5,8 @@
 
 @smoke_test
 Scenario: Verify display Data
-	Given The User has Launched URL
-	When The User click on "Home" button
-	Then The Page Navigates to "Home" page
-    And The User Sees "Display" image
-    And The User Sees "Details" table
+	#Given The User has Launched URL
+	#When The User click on "Home" button
+	#Then The Page Navigates to "Home" page
+ #   And The User Sees "Display" image
+ #   And The User Sees "Details" table
