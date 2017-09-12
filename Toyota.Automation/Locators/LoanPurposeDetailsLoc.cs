@@ -9,8 +9,6 @@ namespace Toyota.Automation.Repository
 {
     public interface ILoanPurposeDetails
     {
-
-
         By BtnHideShowDebug { get; }
 
         By DonePurposeLoanDialog { get; }
