@@ -6,8 +6,6 @@ namespace Toyota.Automation.Repository
 {
     public interface IHomeDetails
     {
-
-
         By NimbleLogo { get; }
 
         By linkMenuApply { get; }
