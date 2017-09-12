@@ -192,6 +192,5 @@ namespace Toyota.Automation
             _driver = new RemoteWebDriver(new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capability, TimeSpan.FromSeconds(120));
         }
 
-
     }
 }

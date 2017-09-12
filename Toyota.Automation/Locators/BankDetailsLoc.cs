@@ -9,7 +9,6 @@ namespace Toyota.Automation.Repository
 {
     public interface IBankDetails
     {
-
         By BankName { get; }
 
         By ChooseBank { get; }
