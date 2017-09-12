@@ -5,6 +5,8 @@ namespace Toyota.Automation.Repository
 {
     public interface IPersonalDetails
     {
+
+
         By Title { get; }
 
         By FirstName { get; }
