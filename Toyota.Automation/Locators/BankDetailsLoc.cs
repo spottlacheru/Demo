@@ -34,8 +34,7 @@ namespace Toyota.Automation.Repository
         By AccountListOPtion1 { get; }
 
         By AccountListOPtion2 { get; }
-
-        // By GenerateStatementContinue { get; }
+       
         By BSB { get; }
 
         By AccountNumber { get; }
