@@ -195,6 +195,16 @@
   <ItemGroup>
     <Compile Include="Actions\ActionEngine.cs" />
     <Compile Include="AppLocators.cs" />
+    <Compile Include="Feature\Verifycarloan.feature.cs">
+      <DependentUpon>Verifycarloan.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Feature\verifyhouseloan.feature.cs">
+      <DependentUpon>verifyhouseloan.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Feature\VerifyAppSmartline.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -207,6 +217,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Feature\Verifycarloan.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Verifycarloan.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Feature\verifyhouseloan.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>verifyhouseloan.feature.cs</LastGenOutput>
+    </None>
     <None Include="Feature\VerifyAppSmartline.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>VerifyAppSmartline.feature.cs</LastGenOutput>
