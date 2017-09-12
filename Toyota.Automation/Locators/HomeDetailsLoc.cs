@@ -10,9 +10,7 @@ namespace Toyota.Automation.Repository
 
         By linkMenuApply { get; }
         
-        //By ActionApply { get; }
-
-        By EnterAmount { get; }
+       By EnterAmount { get; }
             
         By btnstartApplication { get; }
 
