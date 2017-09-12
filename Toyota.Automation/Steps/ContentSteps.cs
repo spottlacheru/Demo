@@ -65,8 +65,7 @@ namespace Toyota.Automation
         public void GivenNavigateToURL()
         {
             _driver.Navigate().GoToUrl("https://staging.inator.com.au/");
-        }
-        
+        }       
 
 
         [Then(@"Click on Apply button")]
