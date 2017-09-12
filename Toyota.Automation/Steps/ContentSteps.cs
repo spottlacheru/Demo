@@ -42,7 +42,6 @@ namespace Toyota.Automation
         [Conditional("DebugCloudIE")]
         public void SetHelperDesktop()
         {
-
             _bankdetail = new BankDetailsDesktopNLLoc();
             _homedetails = new HomeDetailsDesktopNLLoc();
             _loanpurposdetails = new LoanPurposeDetailsDesktopNLLoc();
