@@ -110,7 +110,7 @@ namespace Toyota.Automation
             _driver = new RemoteWebDriver(
               new Uri("http://hub-cloud.browserstack.com/wd/hub/"), desiredCap);
 
-            _driver.Manage().Window.Maximize();
+            //_driver.Manage().Window.Maximize();
 
         }
 
