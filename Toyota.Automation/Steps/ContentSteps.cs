@@ -84,6 +84,8 @@ namespace Toyota.Automation
         [Then(@"Select loan Amount \(MAAC(.*)\)")]
         public void ThenSelectLoanAmountMAAC(int p0)
         {
+
+
             if (GetPlatform(_driver))
             {
                 RequestLoanAmountMobile(loanamount, "Household goods and furniture");
