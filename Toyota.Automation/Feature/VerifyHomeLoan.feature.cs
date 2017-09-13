@@ -18,20 +18,20 @@ namespace Toyota.Automation.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("VerifyAppSmartline")]
-    public partial class VerifyAppSmartlineFeature
+    [NUnit.Framework.DescriptionAttribute("VerifyHomeLoan")]
+    public partial class VerifyHomeLoanFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "verifyhouseloan.feature"
+#line 1 "VerifyHomeLoan.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "VerifyAppSmartline", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "VerifyHomeLoan", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -64,11 +64,11 @@ namespace Toyota.Automation.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Talk to an Adviser")]
+        [NUnit.Framework.DescriptionAttribute("Home Loan")]
         [NUnit.Framework.CategoryAttribute("Smoke_Run")]
-        public virtual void TalkToAnAdviser()
+        public virtual void HomeLoan()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Talk to an Adviser", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Home Loan", new string[] {
                         "Smoke_Run"});
 #line 5
 this.ScenarioSetup(scenarioInfo);

@@ -1,8 +1,8 @@
-﻿Feature: VerifyAppSmartline
+﻿Feature: VerifyHomeLoan
 	 
 
 @Smoke_Run
-Scenario: Talk to an Adviser
+Scenario: Home Loan
 	Given navigate to url
 Then click on home loans
 And click on  talk to a smartline adviser
