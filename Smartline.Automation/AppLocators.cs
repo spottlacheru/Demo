@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Toyota.Automation
+namespace Smartline.Automation
 {
    public interface AppLocators
     {

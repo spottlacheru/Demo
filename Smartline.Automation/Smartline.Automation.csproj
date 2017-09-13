@@ -200,10 +200,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VerifyAppSmartline.feature</DependentUpon>
     </Compile>
-    <Compile Include="Feature\VerifyCarLoan.feature.cs">
+    <Compile Include="Feature\VerifyTalktoAdviser.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VerifyCarLoan.feature</DependentUpon>
+      <DependentUpon>VerifyTalktoAdviser.feature</DependentUpon>
     </Compile>
     <Compile Include="Feature\VerifyHomeLoan.feature.cs">
       <AutoGen>True</AutoGen>
@@ -211,9 +211,13 @@
       <DependentUpon>VerifyHomeLoan.feature</DependentUpon>
     </Compile>
     <Compile Include="Hooks.cs" />
-    <Compile Include="Locators\SmartlineLoc.cs" />
+    <Compile Include="Locators\ContextActionsAndroid.cs" />
+    <Compile Include="Locators\ContextActionsDesktop.cs" />
+    <Compile Include="Locators\IContextActions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\SmartlineSteps.cs" />
+    <Compile Include="Steps\CommonSteps.cs" />
+    <Compile Include="Steps\ScenarioSteps.cs" />
+    <Compile Include="VerifyCarLoanSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -221,9 +225,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>VerifyAppSmartline.feature.cs</LastGenOutput>
     </None>
-    <None Include="Feature\VerifyCarLoan.feature">
+    <None Include="Feature\VerifyTalktoAdviser.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>VerifyCarLoan.feature.cs</LastGenOutput>
+      <LastGenOutput>VerifyTalktoAdviser.feature.cs</LastGenOutput>
     </None>
     <None Include="Feature\VerifyHomeLoan.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

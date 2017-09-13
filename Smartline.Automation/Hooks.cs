@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
-namespace Toyota.Automation
+namespace Smartline.Automation
 {
 
     [Binding]
     public class Hooks
     {
-
         private readonly IObjectContainer _objContainer;
         private IWebDriver _driver;
 
@@ -70,7 +70,7 @@ namespace Toyota.Automation
         [Conditional("DebugLocalIE")]
         public void DebugLocalIE()
         {
-
+            _driver = new InternetExplorerDriver();
         }
 
         [Conditional("DebugLocalAndroid")]

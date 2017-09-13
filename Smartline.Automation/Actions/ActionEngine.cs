@@ -19,7 +19,7 @@ using OpenQA.Selenium;
 
 
 
-namespace Toyota.Automation
+namespace Smartline.Automation
 {
     public class ActionEngine
     {
@@ -1175,7 +1175,7 @@ namespace Toyota.Automation
 
         }
 
-        public void swithToParentWindow(string strWindowHandle)
+        public void swithToPawrentWindow(string strWindowHandle)
         {
             driver.SwitchTo().Window(strWindowHandle);
         }
