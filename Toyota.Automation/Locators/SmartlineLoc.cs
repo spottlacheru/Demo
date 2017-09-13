@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Toyota.Automation.Locators
 {
-
     public interface ISmartLineLoc
     {
         By HomeLoans { get; }
