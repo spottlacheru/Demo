@@ -17,8 +17,6 @@ using WebDriverWait = OpenQA.Selenium.Support.UI.WebDriverWait;
 using System.IO;
 using OpenQA.Selenium;
 
-
-
 namespace Smartline.Automation
 {
     public class ActionEngine
