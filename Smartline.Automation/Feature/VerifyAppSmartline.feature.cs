@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Smartline.Automation.Feature
+namespace Toyota.Automation.Feature
 {
     using TechTalk.SpecFlow;
     
