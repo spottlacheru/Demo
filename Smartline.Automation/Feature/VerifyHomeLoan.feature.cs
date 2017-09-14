@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Smartline.Automation.Feature
+namespace Toyota.Automation.Feature
 {
     using TechTalk.SpecFlow;
     
@@ -65,11 +65,13 @@ namespace Smartline.Automation.Feature
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Android Talk to adviser")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("Smoke_Run")]
         public virtual void AndroidTalkToAdviser()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Android Talk to adviser", new string[] {
-                        "Smoke_Run"});
+                        "Smoke_Run",
+                        "ignore"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
